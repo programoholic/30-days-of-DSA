@@ -1,5 +1,5 @@
 const  { deleteDuplicates }  = require("./implementations/FilterDuplicateList");
-
+const { getIntersectionNode } = require("./implementations/Intersection-LinkedList");
 class Node {
   constructor(data, next = null) {
     this.data = data;
@@ -131,20 +131,21 @@ class LinkedList {
     return this.size;
   }
 }
+[4,1,8,4,5]
 
-const n = new Node(100);
-const n2 = new Node(100);
-const n3 = new Node(300);
-const n4 = new Node(300);
-const n5 = new Node(5000);
-const n6 = new Node(5000);
+const n = new Node(4);
+const n2 = new Node(1);
+const n3 = new Node(8);
+const n4 = new Node(4);
+const n5 = new Node(5);
+// const n6 = new Node(51000);
 const ll = new LinkedList();
 ll.insert(n);
 ll.insert(n2);
 ll.insert(n3);
 ll.insert(n4);
 ll.insert(n5);
-ll.insert(n6);
+// ll.insert(n6);
 // ll.insertAt(4, n5);
 // ll.insertAt(5, n5);
 // console.log("after insertion : ", ll.size);
@@ -153,6 +154,24 @@ ll.insert(n6);
 // console.log(ll.getAt(2));
 ll.displayList();
 
-const result = deleteDuplicates(ll.head);
-console.log('result is : ', result);
+// const result = deleteDuplicates(ll.head);
+// console.log('result is : ', result);
 // result.displayList();
+
+const ll2 = new LinkedList();
+const x = new Node(5);
+const x2 = new Node(6);
+const x3 = new Node(1);
+const x4 = new Node(8);
+// const x5 = new Node(50);
+// const x6 = new Node(900);
+ll2.insert(x);
+ll2.insert(x2);
+ll2.insert(x3);
+ll2.insert(x4);
+ll2.insert(n3);
+// ll2.insert(n6);
+
+const reslt = getIntersectionNode(ll.head, ll2.head)
+console.log(reslt);
+
