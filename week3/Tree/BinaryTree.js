@@ -53,4 +53,33 @@ class BinaryTree {
     };
     traverse(current);
   }
+
+  preOrderTravsersalIterative() {
+    if (!this.root) {
+      return null;
+    }
+    const stack = [this.root];
+    const result = [];
+    while (stack.length) {
+      let cur = stack.pop();
+      result.push(cur.data);
+      if (cur.right) stack.push(cur.right);
+      if (cur.left) stack.push(cur.left);
+    }
+    return result;
+  }
+  inOrderTravsersalIterative() {
+    if (!this.root) {
+      return null;
+    }
+    const stack = [this.root];
+    const result = [];
+    while (stack.length) {
+      let cur = stack.pop();
+      result.push(cur.data);
+      if (cur.right) stack.push(cur.right);
+      if (cur.left) stack.push(cur.left);
+    }
+    return result;
+  }
 }
