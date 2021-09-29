@@ -50,30 +50,75 @@ class BinarySearchTree {
       return this.searchNode(parentNode.right, value);
     else return this.searchNode(parentNode.left, value);
   }
-  BFS() {}
+
+  BFS() {
+    const queue = [this.root];
+    const traverse = (queue) => {
+      while (queue.length) {
+        const node = queue.shift();
+        console.log("current item is BST : ", node.value);
+        if (node.left) queue.push(node.left);
+        if (node.right) queue.push(node.right);
+      }
+    };
+    traverse(queue);
+  }
   DFS() {}
+
+  /**
+   *
+   * @param {*} value
+   * @returns
+   *
+   *  deletes a node from the tree
+   *  logic :
+   *    - target node is leaf - delete the node
+   *    - if node has only one child -  delete the node & assign the child to parent
+   *    - if two nodes then :
+   */
   deleteNode(value) {
     if (!this.root) {
       console.log("The tree is empty");
       return null;
-    } else if (
-      value === this.root.value &&
-      (this.root.right || this.root.left)
-    ) {
-      console.log("tried to delete root when child is present");
-    } else {
-      return this.removeNode(this.root, value);
     }
-  }
-  removeNode(parent, value) {
-    if (value >= parent.value) {
-      if (parent.right === null) {
-        console.log("Node not found!");
-        return null;
-      } else {
+    const removeNode = (node, val) => {
+      // when node is equal to the value to be deleted
+      if (val === node.value) {
+        console.log("Node found");
+        // check if only root node is present
+        if (!node.right && !node.left) {
+          return null;
+        }
+        // check if left child is present
+        if (!node.right) {
+          return node.left;
+        }
+        // check if only right child is present
+        if (!node.left) {
+          return node.right;
+        }
+        // both the child  present
+        let temp = node.right;
+        while (!node.left) {
+          temp = temp.value;
+        }
+        node.value = temp.value;
+        node.right = removeNode(node.right, temp.value);
       }
-    }
+      // when value is greater than the node value
+      else if (value >= node.value) {
+        node.right = removeNode(node.right, val);
+        return node;
+      }
+      // when value is smaller than the node value
+      else {
+        node.left = removeNode(node.left, val);
+        return node;
+      }
+    };
+    this.root = removeNode(this.root, value);
   }
+
   traverse() {}
 }
 
@@ -87,3 +132,6 @@ bst.insert(7);
 bst.insert(9);
 console.log(JSON.stringify(bst));
 bst.search(11);
+bst.BFS();
+bst.deleteNode(9);
+bst.BFS();
