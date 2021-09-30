@@ -43,5 +43,3 @@ function levelOrder(root) {
   bfs([root]);
   return result;
 }
-
-//process exited with signal SIGSEGV
