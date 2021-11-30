@@ -27,7 +27,7 @@ Example 1:
  */
 var hasPathSum = function (root, targetSum) {
   let flag = false;
-  const getPath = (node, curSum, len) => {
+  const getPath = (node, curSum) => {
     if (!node) return;
     curSum += node.val;
     if (node.left === null && node.right === null) {
@@ -38,11 +38,11 @@ var hasPathSum = function (root, targetSum) {
       }
     } else {
       if (flag) return;
-      getPath(node.left, curSum, len);
-      getPath(node.right, curSum, len);
+      getPath(node.left, curSum);
+      getPath(node.right, curSum);
     }
   };
 
-  getPath(root, 0, 0);
+  getPath(root, 0);
   return flag;
 };
