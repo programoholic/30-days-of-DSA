@@ -23,7 +23,7 @@ class BinaryTree {
         return postOrderTraversal(cb);
     }
   }
-  // root-right-left
+  // root-left-right
   preOrderTraversal(cb) {
     const current = this.root;
     const traverse = (node) => {
@@ -34,7 +34,7 @@ class BinaryTree {
     traverse(current);
   }
   // left - root- right
-  inOrderTraversal() {
+  inOrderTraversal(cb) {
     const current = this.root;
     const traverse = (node) => {
       if (node.left) traverse(node.left);
@@ -69,17 +69,46 @@ class BinaryTree {
     return result;
   }
   inOrderTravsersalIterative() {
-    if (!this.root) {
-      return null;
+    const stack = [];
+
+    let node = this.root;
+    while (stack.length || node !== null) {
+      if (node !== null) {
+        stack.push(node);
+        node = node.left;
+      } else {
+        node = stack.pop();
+        console.log("out put is L ", node.data);
+        node = node.right;
+      }
     }
-    const stack = [this.root];
-    const result = [];
-    while (stack.length) {
-      let cur = stack.pop();
-      result.push(cur.data);
-      if (cur.right) stack.push(cur.right);
-      if (cur.left) stack.push(cur.left);
-    }
-    return result;
   }
 }
+
+const tree = new BinaryTree();
+const node1 = new TreeNode(10);
+const node2 = new TreeNode(4);
+const node3 = new TreeNode(140);
+const node4 = new TreeNode(15);
+const node5 = new TreeNode(53);
+const node6 = new TreeNode(65);
+
+tree.root = node1;
+tree.root.left = node2;
+tree.root.right = node3;
+tree.root.left.left = node4;
+tree.root.left.right = node5;
+tree.root.right.left = node6;
+// tree.BFS();
+let b = [];
+tree.inOrderTraversal((item) => {
+  console.log(item.data);
+  b.push(item.data);
+});
+console.log(b);
+let a = tree.inOrderTravsersalIterative();
+console.log(a);
+tree.preOrderTraversal((item) => {
+  console.log(item.data);
+  b.push(item.data);
+});
