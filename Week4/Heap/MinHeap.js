@@ -6,12 +6,13 @@ class MinHeap {
     this.heap[0] = "X";
   }
   add(element) {
-    this.realSize++;
     if (this.reaSize > this.heapSize) {
       this.realSize--;
       throw new Error("Heap size limit exceeded");
       return;
     }
+    this.realSize++;
+
     this.heap[this.realSize] = element;
     let index = this.realSize;
     let parent = Math.floor(index / 2);

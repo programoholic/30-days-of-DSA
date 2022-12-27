@@ -30,18 +30,17 @@ class Graph {
     this.nodes = new Map();
     this.edgeDirection = edgeDirection;
   }
+
   addEdge(source, destination) {
     const sourceNode = this.addVertex(source);
     const destinationNode = this.addVertex(destination);
-
     sourceNode.addAdjacent(destinationNode);
-
     if (this.edgeDirection === Graph.UNDIRECTED) {
       destinationNode.addAdjacent(sourceNode);
     }
-
     return [sourceNode, destinationNode];
   }
+
   addVertex(value) {
     if (this.nodes.has(value)) {
       return this.nodes.get(value);
@@ -51,6 +50,7 @@ class Graph {
       return vertex;
     }
   }
+
   removeVertex(value) {
     const current = this.nodes.get(value);
     if (current) {
@@ -60,20 +60,20 @@ class Graph {
     }
     return this.nodes.delete(value);
   }
+
   removeEdge(source, destination) {
     const sourceNode = this.nodes.get(source);
     const destinationNode = this.nodes.get(destination);
 
     if (sourceNode && destinationNode) {
       sourceNode.removeAdjacent(destinationNode);
-
       if (this.edgeDirection === Graph.UNDIRECTED) {
         destinationNode.removeAdjacent(sourceNode);
       }
     }
-
     return [sourceNode, destinationNode];
   }
+
   bfs(first) {
     const visited = new Map();
     const visitList = [];

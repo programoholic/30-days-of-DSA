@@ -1,0 +1,56 @@
+/**
+ * 
+ * Given some names and their values. Write a function which takes name as input and outputs full value, also replacing the name in the value if present.
+
+AXA = '/leetcode/config'
+BYB =  '/%AXA%/interview/corner/file'
+LCLS = '/tmp/file/usr/shared/%BYB%'
+
+Input: BYB
+Output: '/leetcode/config/interview/corner/file'
+
+Input: LCLS
+Output: '/tmp/file/usr/shared/leetcode/config/interview/corner/file'
+ * 
+ * 
+ */
+
+const map = {
+  AXA: "/leetcode/config",
+  BYB: "/%AXA%/interview/corner/file",
+  LCLS: "/tmp/file/usr/shared/%BYB%",
+};
+
+function transform(code) {}
+
+var breakPalindrome = function (palindromeStr) {
+  if (palindromeStr.length <= 1) {
+    return "";
+  }
+  const a = "a";
+  const b = "b";
+  let i = 0;
+  let j = palindromeStr.length - 1;
+  while (i < j) {
+    if (palindromeStr[i] !== a) {
+      return palindromeStr.substring(0, i) + a + palindromeStr.substring(i + 1);
+    }
+    i += 1;
+    j -= 1;
+  }
+  return palindromeStr.substring(0, palindromeStr.length - 1) + b;
+};
+
+let superClone = (object) => {
+  let cloning = {};
+
+  Object.keys(object).map((prop) => {
+    if (Array.isArray(object[prop])) {
+      cloning[prop] = [].concat(object[prop]);
+    } else if (typeof object[prop] === "object") {
+      cloning[prop] = superClone(object[prop]);
+    } else cloning[prop] = object[prop];
+  });
+
+  return cloning;
+};

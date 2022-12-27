@@ -64,12 +64,14 @@ class MaxHeap {
   }
 }
 
-const maxHeap = new MaxHeap(20);
-maxHeap.add(10);
-maxHeap.add(120);
-maxHeap.add(20);
-maxHeap.add(40);
-maxHeap.add(30);
-console.log(maxHeap.pop());
+// const maxHeap = new MaxHeap(20);
+// maxHeap.add(10);
+// maxHeap.add(120);
+// maxHeap.add(20);
+// maxHeap.add(40);
+// maxHeap.add(30);
+// console.log(maxHeap.pop());
 
-maxHeap.display();
+// maxHeap.display();
+
+module.exports = { MaxHeap };

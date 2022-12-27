@@ -1,0 +1,15 @@
+{
+  "name": "problems",
+  "version": "1.0.0",
+  "description": "",
+  "main": "top-k-hotel.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@datastructures-js/priority-queue": "^6.1.1"
+  }
+}
