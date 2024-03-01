@@ -80,6 +80,10 @@ function getWord(node, prefix, r) {
   return prefix;
 }
 
+function test() {
+  return "test";
+}
+
 function suggestedProducts(products, searchWord) {
   // your code will replace this placeholder return statement
   let trie = new Trie();
